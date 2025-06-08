@@ -40,7 +40,7 @@ async def get_movies(
         return f"{base_path}?page={p}&per_page={per_page}"
 
     return {
-        "movies": movies,
+        "movies": [MovieDetailResponseSchema.model_validate(movie) for movie in movies],
         "prev_page": make_url(page - 1) if page > 1 else None,
         "next_page": make_url(page + 1) if page < total_pages else None,
         "total_pages": total_pages,

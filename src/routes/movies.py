@@ -32,7 +32,6 @@ async def get_movies(
     if not movies:
         raise HTTPException(status_code=404, detail="No movies found.")
 
-    base_url = str(request.url.include_query_params(page=page))
     base_path = str(request.url.path)
 
     total_pages = (total_items + per_page - 1) // per_page
